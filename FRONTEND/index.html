@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>College Lost & Found Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <div>
+        <h1>College Lost & Found</h1>
+        <p>Find it. Report it. Return it.</p>
+      </div>
+      <div class="nav-actions">
+        <span id="userGreeting" class="hidden"></span>
+        <button id="logoutBtn" class="btn secondary hidden">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="authSection" class="auth-grid">
+      <div class="hero-card">
+        <span class="badge">COLLEGE PORTAL</span>
+        <h2>Lost something? Found something?</h2>
+        <p>Use one place to report lost belongings, share found items, search posts and help return things to their owners.</p>
+        <div class="feature-list">
+          <div>🔎 Search lost & found posts</div>
+          <div>📌 Post lost or found items</div>
+          <div>🔐 Secure account-based access</div>
+        </div>
+      </div>
+
+      <div class="card auth-card">
+        <div class="tabs">
+          <button id="loginTab" class="tab active">Login</button>
+          <button id="signupTab" class="tab">Create account</button>
+        </div>
+
+        <form id="loginForm">
+          <h2>Welcome back</h2>
+          <label>Email<input id="loginEmail" type="email" required autocomplete="email"></label>
+          <label>Password<input id="loginPassword" type="password" required autocomplete="current-password"></label>
+          <button id="loginBtn" class="btn primary" type="submit">Login</button>
+          <p id="loginMessage" class="message"></p>
+        </form>
+
+        <form id="signupForm" class="hidden">
+          <h2>Create your account</h2>
+          <label>Full name<input id="signupName" type="text" required maxlength="100"></label>
+          <label>Email<input id="signupEmail" type="email" required autocomplete="email"></label>
+          <label>Password<input id="signupPassword" type="password" required minlength="6" autocomplete="new-password"></label>
+          <label>Confirm password<input id="signupConfirm" type="password" required minlength="6" autocomplete="new-password"></label>
+          <button id="signupBtn" class="btn primary" type="submit">Create account</button>
+          <p id="signupMessage" class="message"></p>
+        </form>
+      </div>
+    </section>
+
+    <section id="appSection" class="hidden">
+      <div class="dashboard-head">
+        <div>
+          <span class="badge">DASHBOARD</span>
+          <h2>Lost & Found Board</h2>
+          <p>Post an item or search the college community's reports.</p>
+        </div>
+        <button id="openPostBtn" class="btn primary">+ Post an item</button>
+      </div>
+
+      <section class="card filters">
+        <input id="searchInput" type="search" placeholder="Search by item, category or location">
+        <select id="typeFilter">
+          <option value="">All types</option>
+          <option value="LOST">Lost</option>
+          <option value="FOUND">Found</option>
+        </select>
+        <button id="refreshBtn" class="btn secondary">Refresh</button>
+      </section>
+
+      <p id="itemsMessage" class="message"></p>
+      <div id="itemsGrid" class="items-grid"></div>
+
+      <section id="myPostsSection" class="card">
+        <div class="section-title">
+          <h2>My posts</h2>
+          <button id="refreshMyPostsBtn" class="btn secondary">Refresh</button>
+        </div>
+        <div id="myPosts"></div>
+      </section>
+    </section>
+  </main>
+
+  <div id="postModal" class="modal hidden">
+    <div class="modal-content">
+      <div class="section-title">
+        <h2>Post a lost/found item</h2>
+        <button id="closePostBtn" class="icon-btn" aria-label="Close">×</button>
+      </div>
+      <form id="itemForm">
+        <div class="two-col">
+          <label>Type
+            <select id="itemType" required>
+              <option value="LOST">Lost</option>
+              <option value="FOUND">Found</option>
+            </select>
+          </label>
+          <label>Item name<input id="itemName" required maxlength="120"></label>
+        </div>
+        <div class="two-col">
+          <label>Category<input id="itemCategory" required maxlength="80" placeholder="ID card, wallet, keys..."></label>
+          <label>Date<input id="itemDate" type="date" required></label>
+        </div>
+        <label>Location<input id="itemLocation" required maxlength="160" placeholder="Library, block, canteen..."></label>
+        <label>Description<textarea id="itemDescription" required maxlength="1000" rows="4"></textarea></label>
+        <label>Image URL (optional)<input id="itemImage" type="url" placeholder="https://..."></label>
+        <button id="itemSubmitBtn" class="btn primary" type="submit">Publish post</button>
+        <p id="itemMessage" class="message"></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

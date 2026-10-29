@@ -1,0 +1,1 @@
+After copying .env.example, create BACKEND/.env and fill it with your own Supabase values. Do NOT upload .env to GitHub.
